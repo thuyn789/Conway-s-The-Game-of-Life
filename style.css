@@ -1,0 +1,278 @@
+body {
+    background-image: url("images/WoodenFrameBackground.jpg");
+    background-size: cover;
+}
+
+form.input {
+    height: 50%;
+}
+
+fieldset {
+    background-color: #b7410e;
+    border: 2px outset gray;
+    border-radius: 10px;
+    color:yellow;
+}
+
+ul {
+    margin-top: 20px;
+}
+
+li {
+    margin-top: 10px;
+}
+
+/*
+Test.html stuff
+*/
+
+div.container {
+    width: 100%;
+    height: 100%;
+    /*border: 4px solid green;*/
+    display: flex;
+    flex-direction: column;
+}
+
+div.logout {
+    width: 100%;
+    /*border: 2px solid blue;*/
+}
+
+div.icon {
+    width:100%;
+    height: 100%;
+    flex-grow: 1;   
+    /*border: 2px solid orange;*/
+    text-align: center;
+}
+
+div.input-div {
+    display: flex;
+    justify-content: center;
+    margin-top: 150px;
+    /*border: 3px solid red;*/ 
+}
+div.input {
+    display: flex;
+    justify-content:center;
+    margin-top: 50px;
+    /*border: 3px solid red;*/ 
+}
+
+h1.title {
+    font-weight: bold;
+    margin-left: 2px;
+}
+
+input.submit-btn {
+    width: 100%;
+}
+
+tr.centered {
+    align-self: center;
+}
+
+div form.logout_div{
+    width:25px;
+    margin-top:20px;
+    margin-left:150px;
+}
+
+p.error {
+    color: red;
+}
+
+div.frame-test {
+    width: 35%;
+    height: 35%;
+    /*border: 5px solid red;*/
+    /*background-image: url("images/LightsFrame.JPG");*/
+    background-size: 100%, 100%;
+}
+
+img.logo_login {
+    position: relative;
+    margin-left: 5px;
+    left: 5px;
+}
+
+.logo {
+    border: 3px solid red;
+    width: 50%;
+    height: 50%;
+}
+
+div.info_box{
+    float:right;
+    justify-content: center;
+    border:2px solid;
+    width:400px;
+    height:300px;
+    margin-right: auto;
+    margin-left: auto;
+    background-image: linear-gradient(to bottom right, #bf00ff,#330000);
+}
+
+/*
+Styling for all levels in games
+*/
+
+div.games{
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div.level1, div.level2{
+    width: 970px;
+}
+
+div.level3{
+    width: 720px;
+}
+
+div.games table, th, td {
+    /*border: 5px solid black*/ /*for testing purposes*/
+    border: transparent;
+    border-collapse: collapse;
+}
+
+div.games form.input input{
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none; 
+    background-color: transparent;
+    /*color: blue;*/ /*for testing purposes*/
+    color:transparent;
+    font-size: 20px;
+}
+
+div.games img{
+    color: blue;
+    box-shadow: 0 0 20px 15px;
+    position: absolute;
+    z-index: -1;
+}
+
+.level1_image, .level2_image{
+    width: 950px;
+}
+
+.level3_image{
+    width: 700px;
+}
+
+p.total_score{
+    text-align: center;
+    font-weight: bold;
+    color: black;
+    background-color: transparent;
+}
+
+p.total_score:hover, p.total_score:focus{
+    animation: fade-in 1s forwards;
+}
+
+@keyframes fade-in {
+  from {background-color: transparent;}
+  to {color: white; background-color: blue;}
+}
+
+div.level_diff_title, div.logout-title{
+    text-align: center;
+    background-image: linear-gradient(to bottom right, #bf00ff,#330000);
+    color:white;
+    width:auto;
+    height:100px;
+}
+
+form.level_form{
+    margin-top:40px;
+    width: 350px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+div.info_box fieldset legend{
+    border:1px solid grey;
+    background:blue;
+}
+
+div.info_box fieldset table{
+    padding:10px;
+}
+
+div.info_box fieldset table td select{
+    margin-top:15px;
+}
+
+/*
+Leader's Board
+*/
+#customers {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:10%;
+
+}
+
+#customers td, #customers th {
+    border: 1px solid blue;
+    text-align: center;
+    padding: 4px;
+
+}
+#customers tr{
+  background-color: #00003f;
+  color: orange;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;color: #00003f;}
+
+#customers tr:hover {background-color: #8000ff;}
+
+#customers th {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    text-align: center;
+    background-color: orange;
+    color: white;
+}
+
+div.leadersboard_title, div.level_title{
+    text-align: center;
+    background-image: linear-gradient(to bottom right, #bf00ff,#330000);
+    color:white;
+    width:auto;
+    height:50px;
+}
+
+/*
+Styling for logout button
+*/
+
+.logout-button {
+    padding: 10px 25px;
+    font-size: 18px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: orange;
+    background-color: #00003f;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 5px;
+}
+
+.logout-button:hover {animation: highlight 1s forwards;}
+
+@keyframes highlight {
+  from {}
+  to {color: white; background-color: blue;}
+}
