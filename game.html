@@ -1,28 +1,38 @@
-<!DOCTYPE html>
-<html lang="en-US">
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="style.css"/>
-	<title>Matching Game</title>
+	<meta charset = "UTF-8" />
+	<title>The Game of Life</title>
+	<link rel="stylesheet" href="style.css">    
 </head>
 <body>
 
-	<h1>Matching Game</h1>
-	<hr/><br/>
+	<h1>Conway's Game of Life</h1><br/>
 
-	<div class="game-timer">
-		Time Remaining <span class="timer">120</span>
+	<div>
+		<strong>Please a pattern:</strong>
+		<select id="patterns">
+			<option value="1">A Dot</option>
+			<option value="2">Block</option>
+			<option value="3">Beehive</option>
+			<option value="4">Blinker</option>
+			<option value="5">Beacon</option>
+			<option value="6">Toad</option>
+		</select>
+		<span id="message"></span>
 	</div><br/>
 
-	<br/>
-	<p class="game-info">Click the button when ready to play or restart a new game.</p>
-	<button type="button" id="ready_btn" onclick="startGame();">READY</button>
+	<div id="gridContainer"></div><br/>
 
-	<br/><hr/>
-	<h3>Want to go back to payroll?</h3>
-	<a href="payroll.html" target="_blank">Click Here</a>
+	<div id="controls">
+		<button id="start">Start</button>
+		<button id="stop">Stop</button>
+		<button id="clear">Clear</button>
+		<button id="random">Random</button>
+		<button id="next1">Next 1 Gen</button>
+		<button id="next23">Next 23 Gen</button>
+	</div> <br/>
+
+	<div id="counter">Generation: <span id="generation">0</span></div>
+
 	<script src="game.js"></script>
+
 </body>
-</html>
