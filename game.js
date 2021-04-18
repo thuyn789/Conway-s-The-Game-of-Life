@@ -17,12 +17,11 @@ var generation = 0;
 var genCount = -1;
 
 //Initialize grid array
-var grid = new Array(rows);
-var nextGrid = new Array(rows);
+var grid;
+var nextGen;
 
 //Set timer
 var timer;
-var reproductionTime = 100;
 
 //Initialize buttons
 var startButton = document.getElementById('start');
@@ -37,12 +36,9 @@ window.onload = setup();
 
 // Initialize variables and start the games
 function setup() {
-    //Initialize first grid
-    for (var i = 0; i < rows; i++)
-    {
-        grid[i] = new Array(cols);
-        nextGrid[i] = new Array(cols);
-    }
+    //Initialize grids
+    grid = new Array(rows).fill(null).map(() => new Array(cols).fill(null));
+    nextGen = new Array(rows).fill(null).map(() => new Array(cols).fill(null));
 
     //Initialize table
     initializeTable();
@@ -60,37 +56,38 @@ function setup() {
 // Lay out the board
 // Credit: https://codepen.io/RBSpatz/pen/rLyNLb-----
 function initializeTable() {
-    var gridContainer = document.getElementById('gridContainer');
-    
-    var table = document.createElement("table");
-    
-    for (var i = 0; i < rows; i++) {
-        var tr = document.createElement("tr");
+	var gridContainer = document.getElementById('gridContainer');
+
+	var table = document.createElement("table");
+
+	for (var i = 0; i < rows; i++) {
+		var tr = document.createElement("tr");
         for (var j = 0; j < cols; j++) {//
-            var cell = document.createElement("td");
-            cell.setAttribute("id", i + "_" + j);
-            cell.setAttribute("class", "dead");
-            cell.onclick = patternHandler;
-            tr.appendChild(cell);
+        	var cell = document.createElement("td");
+        	cell.setAttribute("id", i + "_" + j);
+        	cell.setAttribute("class", "dead");
+        	cell.onclick = patternHandler;
+        	tr.appendChild(cell);
         }
         table.appendChild(tr);
     }
     gridContainer.appendChild(table);
 }//--------End Credit
 
+
 //Clear all cell and set them to dead
 function resetGrids() {
-    //Fill all grid cell to 0
-    for (var i = 0; i < rows; i++) {
-        grid[i].fill(0);
-        nextGrid[i].fill(0);
-    }
-
     //Set all table cell to dead
     for (var i = 0; i < rows; i++) {
-        for (var j = 0; j < cols; j++) {
-            var cell = document.getElementById(i + "_" + j).setAttribute("class", "dead");
-        }
+    	for (var j = 0; j < cols; j++) {
+    		var cell = document.getElementById(i + "_" + j).setAttribute("class", "dead");
+    	}
+    }
+
+    //Fill all grid cell to 0
+    for (var i = 0; i < rows; i++) {
+    	grid[i].fill(0);
+    	nextGen[i].fill(0);
     }
 
     //Set Generation to 0
@@ -102,7 +99,7 @@ function resetGrids() {
 function getPatternOption(){
     //Prevent from choosing if the game is running
     if(lockBoard){
-        return;
+    	return;
     }
 
     //Get data from the drop down selection
@@ -112,9 +109,9 @@ function getPatternOption(){
 
 //This function will handle pattern input from player
 function patternHandler() {
-    if(lockBoard){
-        return;
-    }
+	if(lockBoard){
+		return;
+	}
 
     //Get the id of the cell that was clicked
     var rowcol = this.id.split("_");
@@ -162,187 +159,168 @@ function patternHandler() {
         setCell(grid, row+1, col-2);
         setCell(grid, row+1, col-3);
     } else{
-        setCell(grid, row, col);
+    	setCell(grid, row, col);
     }
 
 }
 
 //This function will set the cell dead to alive and alive to dead
 function setCell(arr, row, col){
-    if(row <= 0 || row <= 0){
-        return;
-    }
-    if(arr[row][col] == 1) {
-        var cell = document.getElementById(row + "_" + col).setAttribute("class", "dead");
-        arr[row][col] = 0;
-    } else if (arr[row][col] == 0) {
-        var cell = document.getElementById(row + "_" + col).setAttribute("class", "live");
-        arr[row][col] = 1;
-    }
+	if(row <= 0 || row <= 0){
+		return;
+	}
+	if(arr[row][col] == 1) {
+		var cell = document.getElementById(row + "_" + col).setAttribute("class", "dead");
+		arr[row][col] = 0;
+	} else if (arr[row][col] == 0) {
+		var cell = document.getElementById(row + "_" + col).setAttribute("class", "live");
+		arr[row][col] = 1;
+	}
 }
 
 // Start game
 function startGame() {
-    if (lockBoard) {
-        return;
-    }
+	if (lockBoard) {
+		return;
+	}
 
-    lockBoard = true;
-    play();
-    
+	lockBoard = true;
+	play();
+
 }
+
 //Stop/pause game
 function stopGame(){
-    lockBoard = false;
-    clearTimeout(timer);
+	lockBoard = false;
+	clearTimeout(timer);
 }
 
 // clear the table
 function clearTable() {
-    lockBoard = false;  
-    clearTimeout(timer);
-    resetGrids();
-}
-
-
-function play() {
-    computeNextGen();
-    
-    if (lockBoard) {
-        timer = setTimeout(play, reproductionTime);
-    }
+	lockBoard = false;  
+	clearTimeout(timer);
+	resetGrids();
 }
 
 //Go to the next generation
 function set1Gen(){
-    lockBoard=true;
-    genCount = 1;
-    while(genCount > 0){
-        play();
-        genCount--;
-    }
-    stopGame();
+	lockBoard=true;
+	genCount = 1;
+	while(genCount > 0){
+		play();
+		genCount--;
+	}
+	stopGame();
 
 }
 
 //Go to the next 23 generation (roughly)
 function set23Gen(){
-    lockBoard=true;
-    genCount = 23;
-    while(genCount > 0){
-        play();
-        genCount--;
-    }
-    stopGame();
+	lockBoard=true;
+	genCount = 23;
+	while(genCount > 0){
+		play();
+		genCount--;
+	}
+	stopGame();
 }
 
 //This function will randomize the table
 function randomizeTable() {
-    if (lockBoard) {
-        return;
-    }
-
-    resetGrids();
-
-    for (var i = 0; i < rows; i++) {
-        for (var j = 0; j < cols; j++) {
-            grid[i][j] = Math.floor(Math.random() * 2);
-            if (grid[i][j] == 1) {
-                var cell = document.getElementById(i + "_" + j).setAttribute("class", "live");
-            }
-        }
-    }
-}
-//// Credit: https://codepen.io/RBSpatz/pen/rLyNLb----------
-function copyAndResetGrid() {
-    for (var i = 0; i < rows; i++) {
-        for (var j = 0; j < cols; j++) {
-            grid[i][j] = nextGrid[i][j];
-            nextGrid[i][j] = 0;
-        }
-    }
+	if (lockBoard) {
+		return;
+	}
+	resetGrids();
+	for (var i = 0; i < rows; i++) {
+		for (var j = 0; j < cols; j++) {
+			grid[i][j] = Math.floor(Math.random() * 2);
+			if (grid[i][j] == 1) {
+				var cell = document.getElementById(i + "_" + j).setAttribute("class", "live");
+			}
+		}
+	}
 }
 
-function updateView() {
-    for (var i = 0; i < rows; i++) {
-        for (var j = 0; j < cols; j++) {
-            var cell = document.getElementById(i + "_" + j);
-            if (grid[i][j] == 0) {
-                cell.setAttribute("class", "dead");
-            } else {
-                cell.setAttribute("class", "live");
-            }
-        }
-    }
-}
 
-function computeNextGen() {
+// Credit: https://www.youtube.com/watch?v=deXzu0Eregs
+function displayNextGen() {
+	//Applying the rules and count neighbors
+	for (var i = 0; i < rows; i++) {
+		for (var j = 0; j < cols; j++) {
+			var numNeighbors = countNeighbors(i, j);
+			if(grid[i][j] == 1 && numNeighbors < 2) {
+		    	//If current cell is alive and numNeighbors is less than 2
+		    	//Current cell will die in the next generation due to underpopulation
+		    	nextGen[i][j] = 0;
+		    } else if(grid[i][j] == 1 && numNeighbors > 3){
+		    	//If current cell is alive and numNeighbors is more than 2
+		    	//Current cell will die in the next generation due to overpopulation
+		    	nextGen[i][j] = 0;
+		    } else if(grid[i][j] == 0 && numNeighbors == 3){
+		    	//If current cell is dead and numNeighbors equals to 3
+		    	//Current cell will become alive in the next generation
+		    	nextGen[i][j] = 1;
+		    } else{
+		    	//Otherwise, the current cell's state will stay the same
+		    	nextGen[i][j] = grid[i][j];
+		    }
+
+		    //Copy data from nextGen back to original grid
+		    //grid[i][j] = nextGen[i][j];
+			//nextGen[i][j] = 0;
+		}
+	}
+
+	//Set cell dead or alive for the next generation
     for (var i = 0; i < rows; i++) {
-        for (var j = 0; j < cols; j++) {
-            applyRules(i, j);
-        }
-    }
-    
-    // copy NextGrid to grid, and reset nextGrid
-    copyAndResetGrid();
-    // copy all 1 values to "live" in the table
-    updateView();
+		for (var j = 0; j < cols; j++) {
+			grid[i][j] = nextGen[i][j];
+			if (grid[i][j] == 1) {
+				document.getElementById(i + "_" + j).setAttribute("class", "live");
+			} else {
+				document.getElementById(i + "_" + j).setAttribute("class", "dead");
+			}
+		}
+	}
 
     //Update generation count
     generation++;
     document.getElementById("generation").innerHTML = generation;
+}//---------End Credit
 
-}
 
-// RULES
-// Any live cell with fewer than two live neighbours dies, as if caused by under-population.
-// Any live cell with two or three live neighbours lives on to the next generation.
-// Any live cell with more than three live neighbours dies, as if by overcrowding.
-// Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
-
-function applyRules(row, col) {
-    var numNeighbors = countNeighbors(row, col);
-    if (grid[row][col] == 1) {
-        if (numNeighbors < 2) {
-            nextGrid[row][col] = 0;
-        } else if (numNeighbors == 2 || numNeighbors == 3) {
-            nextGrid[row][col] = 1;
-        } else if (numNeighbors > 3) {
-            nextGrid[row][col] = 0;
-        }
-    } else if (grid[row][col] == 0) {
-        if (numNeighbors == 3) {
-            nextGrid[row][col] = 1;
-        }
-    }
+//// Credit: https://codepen.io/RBSpatz/pen/rLyNLb----------
+function play() {
+	lockBoard=true;
+	displayNextGen();
+	timer = setTimeout(play, 100);
 }
 
 function countNeighbors(row, col) {
-    var count = 0;
-    if (row-1 >= 0) {
-        if (grid[row-1][col] == 1) count++;
-    }
-    if (row-1 >= 0 && col-1 >= 0) {
-        if (grid[row-1][col-1] == 1) count++;
-    }
-    if (row-1 >= 0 && col+1 < cols) {
-        if (grid[row-1][col+1] == 1) count++;
-    }
-    if (col-1 >= 0) {
-        if (grid[row][col-1] == 1) count++;
-    }
-    if (col+1 < cols) {
-        if (grid[row][col+1] == 1) count++;
-    }
-    if (row+1 < rows) {
-        if (grid[row+1][col] == 1) count++;
-    }
-    if (row+1 < rows && col-1 >= 0) {
-        if (grid[row+1][col-1] == 1) count++;
-    }
-    if (row+1 < rows && col+1 < cols) {
-        if (grid[row+1][col+1] == 1) count++;
-    }
-    return count;
+	var count = 0;
+	if (row-1 >= 0) {
+		if (grid[row-1][col] == 1) count++;
+	}
+	if (row-1 >= 0 && col-1 >= 0) {
+		if (grid[row-1][col-1] == 1) count++;
+	}
+	if (row-1 >= 0 && col+1 < cols) {
+		if (grid[row-1][col+1] == 1) count++;
+	}
+	if (col-1 >= 0) {
+		if (grid[row][col-1] == 1) count++;
+	}
+	if (col+1 < cols) {
+		if (grid[row][col+1] == 1) count++;
+	}
+	if (row+1 < rows) {
+		if (grid[row+1][col] == 1) count++;
+	}
+	if (row+1 < rows && col-1 >= 0) {
+		if (grid[row+1][col-1] == 1) count++;
+	}
+	if (row+1 < rows && col+1 < cols) {
+		if (grid[row+1][col+1] == 1) count++;
+	}
+	return count;
 }//---------End Credit
-
