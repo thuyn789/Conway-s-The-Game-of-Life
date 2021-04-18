@@ -1,15 +1,22 @@
-<?php session_start(); #start session?>
 
 <?php include 'common/common-meta-header.php'; ?>
 
 <div class="container">
+    <!--
     <div class="icon">
         <img src="images/Signup.jpg">
     </div>
+    -->
+
+    <div>
+        <img class="title_img" src="./images/Title.JPG">
+    </div>
+
 
     <div class="input-div">
         <form class="input" action="signup-submit.php" method="POST" name="signup_form">
             <fieldset>
+                <legend><p class="legend_txt">Sign Up</p></legend>
                 <table>
                     <!--Username row-->
                     <tr>
