@@ -1,6 +1,14 @@
+/**
+Project 2 - Team Mysterious - Web Programming
+Project name: The Game of Life
+Team members: Tin Huynh, Hyunki Lee, JiaWen Li, Sang Kim, Isaiah Smith
+
+Version: 1.0 beta
+*/
+
 //Set rows and cols
 var rows = 40;
-var cols = 100;
+var cols = 80;
 
 var lockBoard = false;
 
