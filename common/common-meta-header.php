@@ -1,11 +1,7 @@
 <!-- 
-Project 2 - Team 8 - Web Programming
-Project name: House of Mystery
-Type: Hidden item game
-Team members: Isaiah Smith, JiaWen Li, Tin Huynh, Hyunki Lee
-
-Purpose: To simulate real hidden item games by using html, css, and php
-Results: The game/program will let user choose hidden objects in game, add their score, display leader board at the end.
+Project 2 - Team Mysterious - Web Programming
+Project name: The Game of Life
+Team members: Tin Huynh, Hyunki Lee, JiaWen Li, Sang Kim, Isaiah Smith
 
 Version: 1.0 beta
 -->
@@ -15,7 +11,7 @@ Version: 1.0 beta
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="style.css" type="text/css" />
-	<link rel="icon" type="imag/gif" href="images/house.png"/>
-	<title>House of Mystery</title>
+	<link rel="icon" type="imag/gif" href="./images/gameoflife.png"/>
+	<title>The Game of Life</title>
 </head>
 <body>

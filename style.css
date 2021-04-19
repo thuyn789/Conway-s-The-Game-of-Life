@@ -25,6 +25,10 @@ strong{
 	font-size: 24px;
 }
 
+span {
+    color: #222;
+}
+
 .dropbox {
 	position: relative;
 }
@@ -65,4 +69,46 @@ td.live {
 	background-color: #4EF444;
 	background-size: cover;
 	border-radius: 10px;
+}
+
+#submit-btn{
+	width: 100%;
+}
+
+#submit-btn, #logout-btn {
+    border-radius: 10px;
+    background-color: lightgray;
+    text-align: center;
+}
+
+form.input {
+    position: absolute;
+    left: 40%;
+    top: 30%;
+}
+
+p.legend_txt {
+    color: white;
+    margin-bottom: 10px;
+}
+
+img.title_img {
+	margin-right: auto;
+	margin-left: auto;
+    position: relative;
+    top: 0%;
+    left: 27%;
+}
+
+a {
+	color: #FFA500;
+}
+
+#submit-btn:hover, #logout-btn:hover, a:hover{
+	animation: highlight 0.5s forwards;
+}
+
+@keyframes highlight {
+	from {}
+	to {color:white; background-color: blue;}
 }

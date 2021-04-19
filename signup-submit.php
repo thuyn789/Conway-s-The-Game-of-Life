@@ -1,7 +1,4 @@
-<?php session_start(); #start session?>
-
 <?php include 'common/common-meta-header.php'; ?>
-
 
 <?php 
 //Check if user get to this page legitimately by going through signup.php
@@ -32,9 +29,6 @@ if(isset($_POST["submit"])){
            echo "<a href='./index.php'>Return to login </a>";
            $save_str1 = $name . "," . $email. "," . $pass . "\n";
            file_put_contents($data_file, $save_str1, FILE_APPEND);
-
-            $_SESSION['username'] = $name; #create session variable for username
-            $_SESSION['score'] = 0; #initialize user's score for current session 
         }
     }
 }else{
