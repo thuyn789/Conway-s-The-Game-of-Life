@@ -31,10 +31,10 @@ var randomButton = document.getElementById("random");
 var next1Gen = document.getElementById('next1');
 var next23Gen = document.getElementById("next23");
 
-// Load the game when the page is loaded
+//Load the game when the page is loaded
 window.onload = setup();
 
-// Initialize variables and start the games
+//Initialize variables and start the games
 function setup() {
     //Initialize grids
     grid = new Array(rows).fill(null).map(() => new Array(cols).fill(null));
@@ -53,8 +53,8 @@ function setup() {
     next23Gen.onclick = set23Gen;
 }
 
-// Lay out the board
-// Credit: https://codepen.io/RBSpatz/pen/rLyNLb-----
+//Initialize lay out for the board
+//Credit: https://codepen.io/RBSpatz/pen/rLyNLb-----
 function initializeTable() {
 	var gridContainer = document.getElementById('gridContainer');
 
@@ -73,7 +73,6 @@ function initializeTable() {
     }
     gridContainer.appendChild(table);
 }//--------End Credit
-
 
 //Clear all cell and set them to dead
 function resetGrids() {
@@ -178,7 +177,7 @@ function setCell(arr, row, col){
 	}
 }
 
-// Start game
+//Start game
 function startGame() {
 	if (lockBoard) {
 		return;
@@ -207,11 +206,10 @@ function set1Gen(){
 	lockBoard=true;
 	genCount = 1;
 	while(genCount > 0){
-		play();
+		displayNextGen();
 		genCount--;
 	}
 	stopGame();
-
 }
 
 //Go to the next 23 generation (roughly)
@@ -219,7 +217,7 @@ function set23Gen(){
 	lockBoard=true;
 	genCount = 23;
 	while(genCount > 0){
-		play();
+		displayNextGen();
 		genCount--;
 	}
 	stopGame();
@@ -241,8 +239,7 @@ function randomizeTable() {
 	}
 }
 
-
-// Credit: https://www.youtube.com/watch?v=deXzu0Eregs
+//Credit: https://www.youtube.com/watch?v=deXzu0Eregs
 function displayNextGen() {
 	//Applying the rules and count neighbors
 	for (var i = 0; i < rows; i++) {
@@ -264,10 +261,6 @@ function displayNextGen() {
 		    	//Otherwise, the current cell's state will stay the same
 		    	nextGen[i][j] = grid[i][j];
 		    }
-
-		    //Copy data from nextGen back to original grid
-		    //grid[i][j] = nextGen[i][j];
-			//nextGen[i][j] = 0;
 		}
 	}
 
@@ -288,12 +281,11 @@ function displayNextGen() {
     document.getElementById("generation").innerHTML = generation;
 }//---------End Credit
 
-
-//// Credit: https://codepen.io/RBSpatz/pen/rLyNLb----------
+//Credit: https://codepen.io/RBSpatz/pen/rLyNLb----------
 function play() {
 	lockBoard=true;
 	displayNextGen();
-	timer = setTimeout(play, 100);
+	timer = setTimeout(play, 100);	
 }
 
 function countNeighbors(row, col) {
