@@ -212,7 +212,7 @@ function set1Gen(){
 	stopGame();
 }
 
-//Go to the next 23 generation (roughly)
+//Go to the next 23 generation
 function set23Gen(){
 	lockBoard=true;
 	genCount = 23;
