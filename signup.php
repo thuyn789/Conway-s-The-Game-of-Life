@@ -1,4 +1,3 @@
-
 <?php include 'common/common-meta-header.php'; ?>
 
 <div class="container">
@@ -9,19 +8,18 @@
     -->
 
     <div>
-        <img class="title_img" src="./images/Title.JPG">
+        <img class="title_img" src="./images/Title.JPG" alt="image">
     </div>
-
 
     <div class="input-div">
         <form class="input" action="signup-submit.php" method="POST" name="signup_form">
             <fieldset>
-                <legend><p class="legend_txt">Sign Up</p></legend>
+                <legend>Sign Up</legend>
                 <table>
                     <!--Username row-->
                     <tr>
                         <td>
-                            <label for="username">Username:</label>
+                            <label>Username:</label>
                         </td>
 
                         <td>
@@ -32,9 +30,8 @@
                     <!--Email row-->
                     <tr>
                         <td>
-                            <label for="email">Email:</label>
+                            <label>Email:</label>
                         </td>
-
                         <td>
                             <input name="email" type="text" size="16" placeholder="Email">
                         </td>
@@ -43,13 +40,11 @@
                     <!--Password row-->
                     <tr>
                         <td>
-                            <label for="password">Password:</label>
+                            <label>Password:</label>
                         </td>
-
                         <td>
-                            <input type="password" name="password" type="text" size="16" placeholder="Password">
+                            <input type="password" name="password" size="16" placeholder="Password">
                         </td>
-
                     </tr>
 
                     <!--Confirm password row-->
@@ -57,9 +52,8 @@
                         <td>
                             <label for="confirm_password">Confirm Password:</label>
                         </td>
-
                         <td>
-                            <input type="password" id="confirm_password" name="confirm_password" type="text" size="16" placeholder="Confirm Password">
+                            <input type="password" id="confirm_password" name="confirm_password" size="16" placeholder="Confirm Password">
                         </td>
                     </tr>
 
@@ -68,12 +62,11 @@
                         <td colspan="2" class="centered">
                             <input id="submit-btn" class="submit-btn" name="submit" type="submit" value="Sign up!">
                         </td>
-
                     </tr>
 
                     <!--Go to login-->
                     <tr>
-                        <td colspan="2" class="centered" align="center">
+                        <td colspan="2" class="centered">
                             <a href="index.php">Already Registered? Login In</a>
                         </td>
                     </tr>

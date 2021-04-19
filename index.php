@@ -45,20 +45,18 @@
 </div>
 -->
 <div>
-    <img class="title_img" src="./images/Title.JPG">
+    <img class="title_img" src="./images/Title.JPG" alt="image">
 </div>
 
-
-
-    <form class="input" action="" method="POST" name="login_form" id="input_form">
+    <form class="input" method="POST" name="login_form" id="input_form">
         <fieldset>
-            <legend><p class="legend_txt">Login</p></legend>
+            <legend class="legend_txt">Login</legend>
             <table> <!-- This table will contain the fields for the form-->
 
                 <!--Username label & textfield row-->
                 <tr> 
                     <td>
-                        <label for="username">Username:</label>
+                        <label>Username:</label>
                     </td>
                     <td>
                         <input name="username" type="text" size="16" placeholder="Username">
@@ -68,11 +66,11 @@
                 <!--Password label & textfield row-->
                 <tr>
                     <td>
-                        <label for="password">Password:</label>
+                        <label>Password:</label>
                     </td>
 
                     <td>
-                        <input type="password" name="password" type="text" size="16" placeholder="Password">
+                        <input type="password" name="password" size="16" placeholder="Password">
                     </td>
 
                 </tr>
@@ -96,7 +94,6 @@
             </table>
         </fieldset>
     </form>
-
 
 <!-- shared page bottom HTML -->
 <?php include 'common/common-footer.php'; ?>
