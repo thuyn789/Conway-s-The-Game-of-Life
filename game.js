@@ -157,6 +157,26 @@ function patternHandler() {
         setCell(grid, row+1, col-1);
         setCell(grid, row+1, col-2);
         setCell(grid, row+1, col-3);
+    } else if(patternOption == 7){
+        //Oscillators: Glider
+        setCell(grid, row, col);
+        setCell(grid, row, col-1);
+        setCell(grid, row, col-2);
+        setCell(grid, row-1, col);
+        setCell(grid, row-2, col-1);
+    } else if(patternOption == 8){
+        //Oscillators: Lightweight Spaceship
+        setCell(grid, row, col);
+        setCell(grid, row, col-1);
+        setCell(grid, row, col-2);
+        setCell(grid, row, col-3);
+
+        setCell(grid, row-1, col);
+        setCell(grid, row-2, col);
+
+        setCell(grid, row-3, col-1);
+        setCell(grid, row-1, col-4);
+        setCell(grid, row-3, col-4);
     } else{
     	setCell(grid, row, col);
     }
